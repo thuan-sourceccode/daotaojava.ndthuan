@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+
+</head>
+<body>
+<p th:text="${message}"/>
+<form action="/login" method="post">
+<div>Username</div>
+<input name="id"/>
+
+<div>Password</div>
+<input name="password"/>
+<hr>
+<button>login</button>
+</form>
+</body>
+</html>
