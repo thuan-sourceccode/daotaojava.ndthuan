@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	 <h1 th:inline="text">Welcome [[${userInfo.firstName + ' ' + userInfo.lastName}]]</h1>
+    <p th:inline="text">Phone number: [[${userInfo.phone}]]</p>
+    <p th:inline="text">Email: [[${userInfo.email}]]</p>
+</body>
+</html>

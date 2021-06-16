@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="TRACE">
+
+<Properties>
+
+<Property value="%d{yyyy/MM/dd' 'HH:mm:ss:SSS}[%level]%msg%n" name="LOG_PATTERN"/>
+
+<Property name="ROOT_FOLDER">logs</Property>
+
+<Property name="HISTORY_FOLDER">history</Property>
+
+<Property name="cronExpression">0 0 0 * * ?</Property>
+
+<Property name="maxHistory">1</Property>
+
+</Properties>
+
+
+<Appenders>
+
+
+<Console name="console" target="SYSTEM_OUT">
+
+<PatternLayout charset="UTF-8" pattern="${LOG_PATTERN}"> </PatternLayout>
+
+</Console>
+
+
+<RollingFile name="requestLogFile" filePattern="${ROOT_FOLDER}/${HISTORY_FOLDER}/${date:yyyyMMdd}/request_${date:yyyyMMdd}-%i.log.gz" fileName="${ROOT_FOLDER}/request.log">
+
+<PatternLayout charset="UTF-8" pattern="${LOG_PATTERN}"> </PatternLayout>
+
+
+<Policies>
+
+<CronTriggeringPolicy schedule="${cronExpression}"/>
+
+<SizeBasedTriggeringPolicy size="10MB"/>
+
+</Policies>
+
+</RollingFile>
+
+
+<RollingFile name="applicationLogFile" filePattern="${ROOT_FOLDER}/${HISTORY_FOLDER}/${date:yyyyMMdd}/application_${date:yyyyMMdd}-%i.log.gz" fileName="${ROOT_FOLDER}/application.log">
+
+<PatternLayout charset="UTF-8" pattern="${LOG_PATTERN}"> </PatternLayout>
+
+
+<Policies>
+
+<CronTriggeringPolicy schedule="${cronExpression}"/>
+
+<SizeBasedTriggeringPolicy size="10MB"/>
+
+</Policies>
+
+</RollingFile>
+
+
+<RollingFile name="apiLogFile" filePattern="${ROOT_FOLDER}/${HISTORY_FOLDER}/${date:yyyyMMdd}/api_${date:yyyyMMdd}-%i.log.gz" fileName="${ROOT_FOLDER}/api.log">
+
+<PatternLayout charset="UTF-8" pattern="${LOG_PATTERN}"> </PatternLayout>
+
+
+<Policies>
+
+<CronTriggeringPolicy schedule="${cronExpression}"/>
+
+<SizeBasedTriggeringPolicy size="10MB"/>
+
+</Policies>
+
+</RollingFile>
+
+</Appenders>
+
+
+<Loggers>
+
+
+<Logger name="requestLog" additivity="false" level="info">
+
+<AppenderRef ref="requestLogFile"/>
+
+<AppenderRef ref="console"/>
+
+</Logger>
+
+
+<Logger name="applicationLog" additivity="false" level="info">
+
+<AppenderRef ref="applicationLogFile"/>
+
+<AppenderRef ref="console"/>
+
+</Logger>
+
+
+<Logger name="apiLog" additivity="false" level="info">
+
+<AppenderRef ref="apiLogFile"/>
+
+<AppenderRef ref="console"/>
+
+</Logger>
+
+
+<Logger name="org.springframework.boot" level="error">
+
+<!-- <AppenderRef ref="applicationLogFile"/>-->
+
+
+<AppenderRef ref="console"/>
+
+</Logger>
+
+</Loggers>
+
+</Configuration>
