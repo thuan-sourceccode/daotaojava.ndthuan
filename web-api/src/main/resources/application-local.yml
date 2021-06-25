@@ -1,0 +1,9 @@
+password.directory: E:\api\src\main\resources\pwd
+
+database:
+  url: jdbc:mysql://localhost:3307/my_data
+  user: root
+  driver.class.name: com.mysql.cj.jdbc.Driver
+
+# app value
+token.expiration: 1
